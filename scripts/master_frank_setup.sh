@@ -27,15 +27,16 @@ sudo npm install -g gulp coffee-script
 sudo apt-get install python python-dev python-pip
 sudo pip install --upgrade pyserial pyzmq grizzly
 
-# FIXME: this is set as it is right now to work with the virtual machines for testing purposes
-# FIXME: it will NOT, I repeat, will NOT work on a physical beaglebone black and thus should be
-# FIXME: changed appropriately
-HOME_DIR=/home/vagrant # FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME
-# FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME FIXME
+# TODO(vdonato): have home directory variable set itself correctly to be either correct for the
+#                VM or for production
+HOME_DIR=/home/vagrant # FIXME FIXME FIXME
 
 # download hibike, dawn, and runtime
 git clone https://github.com/pioneers/daemon $HOME_DIR
 git clone https://github.com/pioneers/hibike $HOME_DIR
+mkdir -p $HOME_DIR/updates
+cd $HOME_DIR/daemon/app
+npm install
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot
 sudo cp $ROOT_DIR/resources/*.conf /etc/init
