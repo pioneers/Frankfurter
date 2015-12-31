@@ -48,8 +48,6 @@ gulp build
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot
 sudo cp $REPO_ROOT_DIR/resources/*.conf /etc/init
 sudo cp $REPO_ROOT_DIR/resources/50-grizzlybear.rules /etc/udev/rules.d/
-# super hacky... remove hibike for now since we don't know how to deploy it
-sudo rm /etc/init/hibike.conf
 ln -s ~/hibike/hibikeDevices.csv ~/daemon/runtime/hibikeDevices.csv
 
 echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
