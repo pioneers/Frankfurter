@@ -52,5 +52,8 @@ ln -s ~/hibike/hibikeDevices.csv ~/daemon/runtime/hibikeDevices.csv
 
 echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
 
+# NOTE: for testing purposes while developing on the VM
+echo "export HIBIKE_SIMULATOR=1" >> ~/.bashrc
+
 # TODO(vdonato): kill off/disable services that aren't needed
 # TODO(vdonato): probably change the password on a team-by-team basis
