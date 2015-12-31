@@ -13,36 +13,45 @@
 # basis.                                                                                     #
 ##############################################################################################
 
-ROOT_DIR=$(git rev-parse --show-toplevel)
 
 # Install (most) apt-get packages ############################################################
-sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl
+sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached
+
+REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
+cd ~
 
 # Install nodejs and global npm packages #####################################################
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-sudo apt-get install -y nodejs npm
+sudo apt-get install -y nodejs
 sudo npm install -g gulp coffee-script
 
 # Install python, pip, and pip packages ######################################################
-sudo apt-get install python python-dev python-pip
-sudo pip install --upgrade pyserial pyzmq grizzly
+sudo apt-get install -y python python-dev python-pip
+sudo pip install --upgrade pyserial pyzmq pyyaml python-memcached
 sudo pip install --pre pyusb
 
-# TODO(vdonato): have home directory variable set itself correctly to be either correct for the
-#                VM or for production
-HOME_DIR=/home/vagrant # FIXME FIXME FIXME
+# Install pygrizzly ##########################################################################
+git clone https://github.com/pioneers/python-grizzly
+cd python-grizzly
+sudo python setup.py install
+cd ..
+rm -rf python-grizzly
 
 # download hibike, dawn, and runtime
-git clone https://github.com/pioneers/daemon $HOME_DIR
-git clone https://github.com/pioneers/hibike $HOME_DIR
-mkdir -p $HOME_DIR/updates
-cd $HOME_DIR/daemon/app
+git clone https://github.com/pioneers/daemon ~
+git clone https://github.com/pioneers/hibike ~
+mkdir -p ~/updates
+cd ~/daemon/app
 npm install
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot
-sudo cp $ROOT_DIR/resources/*.conf /etc/init
+sudo cp $REPO_ROOT_DIR/resources/*.conf /etc/init
+sudo cp $REPO_ROOT_DIR/resources/50-grizzlybear.rules /etc/udev/rules.d/
 # super hacky... remove hibike for now since we don't know how to deploy it
 sudo rm /etc/init/hibike.conf
+ln -s ~/hibike/hibikeDevices.csv ~/daemon/runtime/hibikeDevices.csv
+
+echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
 
 # TODO(vdonato): kill off/disable services that aren't needed
 # TODO(vdonato): probably change the password on a team-by-team basis

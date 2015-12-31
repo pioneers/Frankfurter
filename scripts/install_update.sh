@@ -1,20 +1,17 @@
 #!/bin/bash
 
-# TODO(vdonato): have home directory variable set itself correctly to be either correct for the
-#                VM or for production
-HOME_DIR=/home/vagrant # FIXME FIXME FIXME
-UPDATES_DIR=$HOME_DIR/updates
-DAWN_DIR=$HOME_DIR/daemon/app
-RUNTIME_DIR=$HOME_DIR/daemon/runtime
-TEMP_DIR=$UPDATES/temp
+UPDATES_DIR=~/updates
+DAWN_DIR=~/daemon/app
+RUNTIME_DIR=~/daemon/runtime
+TEMP_DIR=$UPDATES_DIR/temp
 
 ####################################################################################
 # Update hibike:                                                                   #
 # I'm pretty sure it's okay to just completely wipe and recopy hibike like this... #
 # Will of course fix this if this isn't the case.                                  #
 ####################################################################################
-rm -rf $HOME_DIR/hibike
-cp -r $TEMP_DIR/hibike $HOME_DIR
+rm -rf ~/hibike
+cp -r $TEMP_DIR/hibike ~
 
 ####################################################################################
 # Update dawn/runtime:                                                             #
@@ -25,10 +22,16 @@ cp -r $TEMP_DIR/hibike $HOME_DIR
 ####################################################################################
 cp -r $DAWN_DIR/node_modules $TEMP_DIR
 cp -r $RUNTIME_DIR/student_code $TEMP_DIR
-rm -rf $HOME_DIR/daemon
-cp -r $TEMP_DIR/daemon $HOME_DIR
+rm -rf ~/daemon
+cp -r $TEMP_DIR/daemon ~
 cp -r $TEMP_DIR/node_modules $DAWN_DIR
 cp -r $TEMP_DIR/student_code $RUNTIME_DIR
+
+
+ln -s ~/hibike/hibikeDevices.csv $RUNTIME_DIR/hibikeDevices.csv
+
+cd $DAWN_DIR
+gulp build
 
 ####################################################################################
 # Cleanup!                                                                         #
