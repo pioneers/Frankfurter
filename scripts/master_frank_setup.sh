@@ -26,6 +26,7 @@ sudo npm install -g gulp coffee-script
 # Install python, pip, and pip packages ######################################################
 sudo apt-get install python python-dev python-pip
 sudo pip install --upgrade pyserial pyzmq grizzly
+sudo pip install --pre pyusb
 
 # TODO(vdonato): have home directory variable set itself correctly to be either correct for the
 #                VM or for production
