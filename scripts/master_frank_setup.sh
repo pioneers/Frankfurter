@@ -41,6 +41,8 @@ npm install
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot
 sudo cp $ROOT_DIR/resources/*.conf /etc/init
+# super hacky... remove hibike for now since we don't know how to deploy it
+sudo rm /etc/init/hibike.conf
 
 # TODO(vdonato): kill off/disable services that aren't needed
 # TODO(vdonato): probably change the password on a team-by-team basis
