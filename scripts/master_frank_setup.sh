@@ -35,14 +35,15 @@ git clone https://github.com/pioneers/python-grizzly
 cd python-grizzly
 sudo python setup.py install
 cd ..
-rm -rf python-grizzly
+sudo rm -rf python-grizzly
 
 # download hibike, dawn, and runtime
-git clone https://github.com/pioneers/daemon ~
-git clone https://github.com/pioneers/hibike ~
+git clone https://github.com/pioneers/daemon ~/daemon
+git clone https://github.com/pioneers/hibike ~/hibike
 mkdir -p ~/updates
 cd ~/daemon/app
 npm install
+gulp build
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot
 sudo cp $REPO_ROOT_DIR/resources/*.conf /etc/init
