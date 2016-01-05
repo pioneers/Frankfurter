@@ -20,11 +20,6 @@ sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memca
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
 
-# Install nodejs and global npm packages #####################################################
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-sudo apt-get install -y nodejs
-sudo npm install -g gulp coffee-script
-
 # Install python, pip, and pip packages ######################################################
 sudo apt-get install -y python python-dev python-pip
 sudo pip install --upgrade pyserial pyzmq pyyaml python-memcached
@@ -41,9 +36,6 @@ sudo rm -rf python-grizzly
 git clone https://github.com/pioneers/daemon ~/daemon
 git clone https://github.com/pioneers/hibike ~/hibike
 mkdir -p ~/updates
-cd ~/daemon/app
-npm install
-gulp build
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot
 sudo cp $REPO_ROOT_DIR/resources/*.conf /etc/init

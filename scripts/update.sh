@@ -8,7 +8,6 @@ if ! ls $UPDATES_DIR/frankfurter-update-*.tar.gz 1> /dev/null 2>&1; then
 fi
 mkdir -p $TEMP_DIR
 
-sudo stop dawn
 sudo stop runtime
 # TODO(vdonato): for now we're assuming there's only one update file, and this should be the case
 #                if nothing ever crashes, but this should be more robust and pick the newest
@@ -18,3 +17,4 @@ tar -xf $UPDATES_DIR/frankfurter-update-*.tar.gz -C $TEMP_DIR
 # an update tarball should have all of the instructions on how to install itself in its
 # install_update.sh script, so we simply defer to it here.
 ./$TEMP_DIR/install_update.sh
+sudo start runtime

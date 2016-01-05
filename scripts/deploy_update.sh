@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##############################################################################################
-# Pulls the newest versions of hibike, runtime, and dawn from github and packages them       #
+# Pulls the newest versions of hibike and  runtime from github and packages them nicely      #
 # in a tarball along with the install_update.sh script. Then proceeds to digitally sign      #
 # the file so that the signature can be verified before the robot uses the tarball to update #
 ##############################################################################################
