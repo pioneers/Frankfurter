@@ -20,6 +20,3 @@ Setting up a clone of frank (for a team) involves doing 2 things.
 
 1. Flash the Beaglebone's eMMC with the master frank image (we'll get this on the wiki once it's made)
 2. Run the setup script found in scripts/(this is still being written. will update when complete)
-
-## Flashing a SmartDevice
-To be added...
