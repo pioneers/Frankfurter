@@ -21,9 +21,10 @@ git clone https://github.com/pioneers/hibike $TEMP_DIR/hibike
 cp $ROOT_DIR/scripts/install_update.sh $TEMP_DIR
 
 CURRENT_TIME=$(date +%s%N)
-UPDATE_FILE_NAME=frankfurter-update-$CURRENT_TIME
-tar -zcf $BUILD_DIR/$UPDATE_FILE_NAME".tar.gz" --directory=$TEMP_DIR .
+UPDATE_FILE_NAME=frankfurter-update-"$CURRENT_TIME".tar.gz
+
+cd $BUILD_DIR
+tar -zcf $UPDATE_FILE_NAME --directory=$TEMP_DIR .
+gpg --armor --detach-sign $UPDATE_FILE_NAME # create a signature for the tarball.
 
 rm -rf $TEMP_DIR
-
-#TODO(vdonato): sign the tarball somehow

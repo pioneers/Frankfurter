@@ -29,4 +29,4 @@ ln -s $HOME_DIR/hibike/hibikeDevices.csv $RUNTIME_DIR/hibikeDevices.csv
 ####################################################################################
 # Cleanup!                                                                         #
 ####################################################################################
-rm -rf $TEMP_DIR $UPDATES_DIR/frankfurter-update*.tar.gz
+rm -rf $TEMP_DIR $UPDATES_DIR/frankfurter-update*.tar.gz*
