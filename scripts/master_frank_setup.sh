@@ -64,5 +64,8 @@ echo "export HIBIKE_SIMULATOR=1" >> ~/.bashrc # TODO(vdonato): remove me before 
 #                starts up on boot is an apache server, but be sure to check to see if there are
 #                any others.
 
-# TODO(vdonato): change the password on a team-by-team basis. This should be done in the script that
-#                we run on each beaglebone after flashing it.
+# Disable password login and add our ssh key to authorized_keys ##############################
+echo "    PasswordAuthentication no" | sudo tee --append /etc/ssh/ssh_config
+mkdir -p ~/.ssh
+# Ask Vincent for the private key, or just add your own public key here.
+cat $REPO_ROOT_DIR/resources/frankfurter_vincent.pub >> ~/.ssh/authorized_keys

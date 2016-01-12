@@ -1,5 +1,11 @@
 #!/bin/bash
 
+####################################################################################
+# Robot-side script for installing an update. Takes the tarball given in an
+# individual update, verifies that it is from us, then proceeds to defer to
+# the individual update script to complete the process.
+####################################################################################
+
 UPDATES_DIR=/home/vagrant/updates # FIXME
 TEMP_DIR=$UPDATES_DIR/temp
 

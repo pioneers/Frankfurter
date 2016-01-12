@@ -1,5 +1,10 @@
 #!/bin/bash
 
+####################################################################################
+# Instructions to install a specific update. Packaged in the tarballs used to
+# distribute updates.
+####################################################################################
+
 HOME_DIR=/home/vagrant # FIXME
 UPDATES_DIR=$HOME_DIR/updates
 RUNTIME_DIR=$HOME_DIR/daemon/runtime
