@@ -5,7 +5,7 @@
 # distribute updates.
 ####################################################################################
 
-HOME_DIR=/home/vagrant # FIXME
+HOME_DIR=/home/ubuntu
 UPDATES_DIR=$HOME_DIR/updates
 RUNTIME_DIR=$HOME_DIR/daemon/runtime
 TEMP_DIR=$UPDATES_DIR/temp

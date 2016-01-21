@@ -42,10 +42,6 @@ ln -s ~/hibike/hibikeDevices.csv ~/daemon/runtime/hibikeDevices.csv
 mkdir -p ~/updates
 cp $REPO_ROOT_DIR/scripts/update.sh ~/updates/
 
-# TODO(vdonato): we should really distribute a private key to everyone instead of using my key
-#                to sign things, but this should work for now...
-#                another option would be to sign the key of any person working on deployment, but
-#                that sounds like a bit of a pain to maintain.
 gpg --import $REPO_ROOT_DIR/resources/frankfurter_vincent.gpg
 gpg --sign-key vincentdonato@pioneers.berkeley.edu
 
@@ -56,13 +52,8 @@ sudo cp $REPO_ROOT_DIR/resources/50-grizzlybear.rules /etc/udev/rules.d/
 
 echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
 
-# NOTE: for testing purposes while developing on the VM
-echo "export HIBIKE_SIMULATOR=1" >> ~/.bashrc # TODO(vdonato): remove me before production
-
-# TODO(vdonato): kill off/disable services that aren't needed. I'm fairly certain that the only
-#                non-essential service that the image that we're currently flashing to the beaglebone
-#                starts up on boot is an apache server, but be sure to check to see if there are
-#                any others.
+# stop the apache server from auto-starting
+sudo rm -f /etc/init.d/apache2
 
 # Disable password login and add our ssh key to authorized_keys ##############################
 echo "    PasswordAuthentication no" | sudo tee --append /etc/ssh/ssh_config

@@ -6,7 +6,7 @@
 # the individual update script to complete the process.
 ####################################################################################
 
-UPDATES_DIR=/home/vagrant/updates # FIXME
+UPDATES_DIR=/home/ubuntu/updates
 TEMP_DIR=$UPDATES_DIR/temp
 
 if ! ls $UPDATES_DIR/frankfurter-update-*.tar.gz 1> /dev/null 2>&1; then
