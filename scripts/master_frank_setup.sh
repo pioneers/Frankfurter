@@ -15,14 +15,14 @@
 
 
 # Install (most) apt-get packages ############################################################
-sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached
+sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
 
 # Install python, pip, and pip packages ######################################################
 sudo apt-get install -y python python-dev python-pip
-sudo pip install --upgrade pyserial pyzmq pyyaml python-memcached
+sudo pip install --upgrade pyserial pyzmq pyyaml python-memcached flask flask-socketio
 # there's no stable release version of pyusb in pip right now, so we need the --pre flag
 sudo pip install --pre pyusb
 
