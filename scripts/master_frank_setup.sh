@@ -15,7 +15,8 @@
 
 
 # Install (most) apt-get packages ############################################################
-sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev vim
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
