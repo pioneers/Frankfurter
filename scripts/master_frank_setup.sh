@@ -59,7 +59,8 @@ echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
 sudo rm -f /etc/init.d/apache2
 
 # Disable password login and add our ssh key to authorized_keys ##############################
-echo "    PasswordAuthentication no" | sudo tee --append /etc/ssh/ssh_config
+sudo cp $REPO_ROOT_DIR/resources/sshd_config /etc/ssh/sshd_config
+
 mkdir -p ~/.ssh
 # Ask Vincent for the private key, or just add your own public key here.
 cat $REPO_ROOT_DIR/resources/frankfurter_vincent.pub >> ~/.ssh/authorized_keys
