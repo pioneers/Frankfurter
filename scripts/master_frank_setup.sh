@@ -17,7 +17,7 @@
 # Install (most) apt-get packages ############################################################
 sudo apt-get update -y && sudo apt-get upgrade -y
 # TODO: remove zmq related stuff after we confirm it's 100% not needed.
-sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev vim
+sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev vim tmux
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
