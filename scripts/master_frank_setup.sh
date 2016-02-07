@@ -16,6 +16,7 @@
 
 # Install (most) apt-get packages ############################################################
 sudo apt-get update -y && sudo apt-get upgrade -y
+# TODO: remove zmq related stuff after we confirm it's 100% not needed.
 sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev vim
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
@@ -23,7 +24,8 @@ cd ~
 
 # Install python, pip, and pip packages ######################################################
 sudo apt-get install -y python python-dev python-pip
-sudo pip install --upgrade pyserial pyzmq pyyaml python-memcached flask flask-socketio
+# TODO: remove zmq related stuff after we confirm it's 100% not needed.
+sudo pip install --upgrade pyserial pyzmq pyyaml python-memcached flask flask-socketio eventlet
 # there's no stable release version of pyusb in pip right now, so we need the --pre flag
 sudo pip install --pre pyusb
 
@@ -49,9 +51,10 @@ gpg --sign-key vincentdonato@pioneers.berkeley.edu
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot ##################
 sudo cp $REPO_ROOT_DIR/resources/*.conf /etc/init
 
-#copy config files for grizzlies and network interfaces
+#copy config files for grizzlies, memcached, and network interfaces
 sudo cp $REPO_ROOT_DIR/resources/50-grizzlybear.rules /etc/udev/rules.d/
 sudo cp $REPO_ROOT_DIR/resources/interfaces /etc/network/interfaces
+#TODO: add memcached config files and copy them to the appropriate location
 
 echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
 
