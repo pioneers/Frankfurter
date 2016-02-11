@@ -49,12 +49,14 @@ gpg --import $REPO_ROOT_DIR/resources/frankfurter_vincent.gpg
 gpg --sign-key vincentdonato@pioneers.berkeley.edu
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot ##################
-sudo cp $REPO_ROOT_DIR/resources/*.conf /etc/init
+sudo cp $REPO_ROOT_DIR/resources/runtime.conf /etc/init
+
+sudo cp $REPO_ROOT_DIR/resources/memcached.conf /etc
+
 
 #copy config files for grizzlies, memcached, and network interfaces
 sudo cp $REPO_ROOT_DIR/resources/50-grizzlybear.rules /etc/udev/rules.d/
 sudo cp $REPO_ROOT_DIR/resources/interfaces /etc/network/interfaces
-#TODO: add memcached config files and copy them to the appropriate location
 
 echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
 
