@@ -16,16 +16,14 @@
 
 # Install (most) apt-get packages ############################################################
 sudo apt-get update -y && sudo apt-get upgrade -y
-# TODO: remove zmq related stuff after we confirm it's 100% not needed.
-sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev vim tmux iptables nmap
+sudo apt-get install -y make build-essential gcc git htop curl memcached libevent-dev vim tmux iptables nmap
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
 
 # Install python, pip, and pip packages ######################################################
 sudo apt-get install -y python python-dev python-pip
-# TODO: remove zmq related stuff after we confirm it's 100% not needed.
-sudo pip install --upgrade pyserial pyzmq pyyaml python-memcached flask flask-socketio eventlet
+sudo pip install --upgrade pyserial pyyaml python-memcached flask flask-socketio eventlet
 # there's no stable release version of pyusb in pip right now, so we need the --pre flag
 sudo pip install --pre pyusb
 
@@ -52,10 +50,6 @@ gpg --sign-key vincentdonato@pioneers.berkeley.edu
 sudo cp $REPO_ROOT_DIR/resources/runtime.conf /etc/init
 sudo cp $REPO_ROOT_DIR/resources/memcached.conf /etc/init
 sudo rm /etc/init.d/memcached
-
-# FIXME: remove this line and the one below if running memcached as a service works.
-# sudo cp $REPO_ROOT_DIR/resources/memcached.conf /etc
-
 
 #copy config files for grizzlies, memcached, and network interfaces
 sudo cp $REPO_ROOT_DIR/resources/50-grizzlybear.rules /etc/udev/rules.d/
