@@ -17,7 +17,7 @@
 # Install (most) apt-get packages ############################################################
 sudo apt-get update -y && sudo apt-get upgrade -y
 # TODO: remove zmq related stuff after we confirm it's 100% not needed.
-sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev vim tmux iptables
+sudo apt-get install -y make build-essential gcc git htop libzmq3-dev curl memcached libevent-dev vim tmux iptables nmap
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
@@ -50,8 +50,11 @@ gpg --sign-key vincentdonato@pioneers.berkeley.edu
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot ##################
 sudo cp $REPO_ROOT_DIR/resources/runtime.conf /etc/init
+sudo cp $REPO_ROOT_DIR/resources/memcached.conf /etc/init
+sudo rm /etc/init.d/memcached
 
-sudo cp $REPO_ROOT_DIR/resources/memcached.conf /etc
+# FIXME: remove this line and the one below if running memcached as a service works.
+# sudo cp $REPO_ROOT_DIR/resources/memcached.conf /etc
 
 
 #copy config files for grizzlies, memcached, and network interfaces
