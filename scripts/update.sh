@@ -25,10 +25,10 @@ set -e
 #                update tarball in the case that there are multiple.
 
 # verify that the tarball came from us and not some random kid
-gpg --verify frankfurter-update-*.tar.gz.asc frankfurter-update-*.tar.gz
-tar -xf $UPDATES_DIR/frankfurter-update-*.tar.gz -C $TEMP_DIR
+sudo gpg --ignore-time-conflict --verify frankfurter-update-*.tar.gz.asc frankfurter-update-*.tar.gz
+sudo tar -xf $UPDATES_DIR/frankfurter-update-*.tar.gz -C $TEMP_DIR --warning=no-timestamp
 
 # an update tarball should have all of the instructions on how to install itself in its
 # install_update.sh script, so we simply defer to it here.
-./$TEMP_DIR/install_update.sh
+sudo sh $TEMP_DIR/install_update.sh
 sudo start runtime

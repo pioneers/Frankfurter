@@ -13,6 +13,8 @@
 # basis.                                                                                     #
 ##############################################################################################
 
+# enable passwordless sudo
+echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' | sudo tee --append /etc/sudoers
 
 # Install (most) apt-get packages ############################################################
 sudo apt-get update -y && sudo apt-get upgrade -y
@@ -43,8 +45,8 @@ ln -s ~/hibike/hibikeDevices.csv ~/daemon/runtime/hibikeDevices.csv
 mkdir -p ~/updates
 cp $REPO_ROOT_DIR/scripts/update.sh ~/updates/
 
-gpg --import $REPO_ROOT_DIR/resources/frankfurter_vincent.gpg
-gpg --sign-key vincentdonato@pioneers.berkeley.edu
+sudo gpg --ignore-time-conflict --import $REPO_ROOT_DIR/resources/frankfurter_vincent.gpg
+sudo gpg --ignore-time-conflict --sign-key vincentdonato@pioneers.berkeley.edu
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot ##################
 sudo cp $REPO_ROOT_DIR/resources/runtime.conf /etc/init
