@@ -18,7 +18,7 @@ echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' | sudo tee --append /etc/sudoers
 
 # Install (most) apt-get packages ############################################################
 sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install -y make build-essential gcc git htop curl memcached libevent-dev vim tmux iptables nmap
+sudo apt-get install -y make build-essential gcc git htop curl memcached libevent-dev vim tmux nmap
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
