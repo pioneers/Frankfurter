@@ -18,7 +18,7 @@ echo 'nameserver 8.8.8.8' | sudo tee --append /etc/resolv.conf
 
 # Install tmux ###############################################################################
 sudo apt-get update -y
-sudo apt-get install tmux
+sudo apt-get install tmux -y
 
 cd $HOME_DIR
 
@@ -28,7 +28,7 @@ git clone https://github.com/pioneers/frankfurter
 cd ~/frankfurter
 
 # Run .master_frank_setup.sh inside tmux #####################################################
-tmux new-session -d './master_frank_setup.sh'
+tmux new-session -d './scripts/master_frank_setup.sh'
 
 # Feel free to disconnect and run another script #############################################
 echo 'Disconnect OK'
