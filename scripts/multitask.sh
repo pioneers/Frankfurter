@@ -17,6 +17,7 @@ echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' | sudo tee --append /etc/sudoers
 echo 'nameserver 8.8.8.8' | sudo tee --append /etc/resolv.conf
 
 # Install tmux ###############################################################################
+sudo apt-get update -y
 sudo apt-get install tmux
 
 cd $HOME_DIR
