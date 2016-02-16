@@ -14,7 +14,6 @@
 ##############################################################################################
 
 # Install (most) apt-get packages ############################################################
-sudo apt-get upgrade -y
 sudo apt-get install -y make build-essential gcc git htop curl memcached libevent-dev vim
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
