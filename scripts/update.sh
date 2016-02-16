@@ -23,7 +23,7 @@ set -e
 # verify that the tarball came from us and not some random kid
 gpg --ignore-time-conflict --verify frankfurter-update-*.tar.gz.asc frankfurter-update-*.tar.gz
 tar -xf $UPDATES_DIR/frankfurter-update-*.tar.gz -C $TEMP_DIR --warning=no-timestamp
-rm -rf $TEMP_DIR $UPDATES_DIR/frankfurter-update*.tar.gz*
+rm -rf $UPDATES_DIR/frankfurter-update*.tar.gz*
 
 # an update tarball should have all of the instructions on how to install itself in its
 # install_update.sh script, so we simply defer to it here.

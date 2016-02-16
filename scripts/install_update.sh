@@ -28,8 +28,6 @@ mv ~/daemon ~/daemon_old
 mv ~/daemon_new ~/daemon
 cp -r $TEMP_DIR/student_code $RUNTIME_DIR
 
-# TODO???: change ownership of hibike / daemon folders
-
 ln -s ~/hibike/hibikeDevices.csv $RUNTIME_DIR/hibikeDevices.csv
 ####################################################################################
 # Cleanup!                                                                         #
