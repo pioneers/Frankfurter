@@ -13,12 +13,9 @@
 # basis.                                                                                     #
 ##############################################################################################
 
-# enable passwordless sudo
-echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' | sudo tee --append /etc/sudoers
-
 # Install (most) apt-get packages ############################################################
-sudo apt-get update -y && sudo apt-get upgrade -y
-sudo apt-get install -y make build-essential gcc git htop curl memcached libevent-dev vim tmux nmap
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install -y make build-essential gcc git htop curl memcached libevent-dev vim
 
 REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
@@ -34,7 +31,7 @@ git clone https://github.com/pioneers/python-grizzly
 cd python-grizzly
 sudo python setup.py install
 cd ..
-sudo rm -rf python-grizzly
+rm -rf python-grizzly
 
 # download hibike and runtime ################################################################
 git clone https://github.com/pioneers/daemon ~/daemon
@@ -45,8 +42,12 @@ ln -s ~/hibike/hibikeDevices.csv ~/daemon/runtime/hibikeDevices.csv
 mkdir -p ~/updates
 cp $REPO_ROOT_DIR/scripts/update.sh ~/updates/
 
-sudo gpg --ignore-time-conflict --import $REPO_ROOT_DIR/resources/frankfurter_vincent.gpg
-sudo gpg --ignore-time-conflict --sign-key vincentdonato@pioneers.berkeley.edu
+# TODO(vdonato): updates, hibike, and daemon folder seem to be owned by root. change the owner
+#                to ubuntu
+
+# XXX: not sure if the beaglebone needs to run gpg as root for whatever reason
+gpg --ignore-time-conflict --import $REPO_ROOT_DIR/resources/frankfurter_vincent.gpg
+gpg --ignore-time-conflict --sign-key vincentdonato@pioneers.berkeley.edu
 
 # copy .conf files into /etc/init so that hibike/dawn/runtime start on boot ##################
 sudo cp $REPO_ROOT_DIR/resources/runtime.conf /etc/init
@@ -61,6 +62,7 @@ echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
 
 # stop the apache server from auto-starting
 sudo rm -f /etc/init.d/apache2
+# TODO(vdonato): clean out more startup processes)
 
 # Disable password login and add our ssh key to authorized_keys ##############################
 sudo cp $REPO_ROOT_DIR/resources/sshd_config /etc/ssh/sshd_config

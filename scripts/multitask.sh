@@ -10,8 +10,8 @@
 # script as root, THEN detach the tmux session manually                                      #
 ##############################################################################################
 
-HOME_DIR=/home/ubuntu
-cd ~
+# enable passwordless sudo
+echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' | sudo tee --append /etc/sudoers
 
 # Append DNS to /etc/resolv.conf #############################################################
 echo 'nameserver 8.8.8.8' | sudo tee --append /etc/resolv.conf
@@ -24,9 +24,7 @@ cd $HOME_DIR
 # Clone frankfurter script files #############################################################
 git clone https://github.com/pioneers/frankfurter
 
-FRANK_DIR=$HOME_DIR/frankfurter
-
-cd $FRANK_DIR
+cd ~/frankfurter
 
 # Run .master_frank_setup.sh inside tmux #####################################################
 tmux new-session -d './master_frank_setup.sh'
