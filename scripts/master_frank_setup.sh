@@ -30,7 +30,7 @@ git clone https://github.com/pioneers/python-grizzly
 cd python-grizzly
 sudo python setup.py install
 cd ..
-rm -rf python-grizzly
+sudo rm -rf python-grizzly
 
 # download hibike and runtime ################################################################
 git clone https://github.com/pioneers/daemon ~/daemon
