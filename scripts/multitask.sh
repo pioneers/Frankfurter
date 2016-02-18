@@ -2,6 +2,7 @@
 
 ##############################################################################################
 # Appends appropriate DNS to resolv.conf for internet access                                 #
+# Creates local file to bypass conffile prompt for dpkg configuration                        #
 # Installs tmux onto ubuntu                                                                  #
 # Clones the frankfurter repo and started the script in a new detached tmux session allowing #
 # the user to disconnect from the ssh session and proceed to start the script on other BBB's #
@@ -15,6 +16,12 @@ echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' | sudo tee --append /etc/sudoers
 
 # Append DNS to /etc/resolv.conf #############################################################
 echo 'nameserver 8.8.8.8' | sudo tee --append /etc/resolv.conf
+
+# Create local file to bypass conffile prompt in apt-get ####################################
+echo 'Dpkg::Options {
+   "--force-confdef";
+   "--force-confold";
+}' | sudo tee --append /etc/apt/apt.conf.d/local
 
 # Install tmux ###############################################################################
 sudo apt-get update -y && sudo apt-get -y upgrade
