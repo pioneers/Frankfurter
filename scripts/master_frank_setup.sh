@@ -20,6 +20,7 @@ REPO_ROOT_DIR=$(git rev-parse --show-toplevel)
 cd ~
 
 # Install python, pip, and pip packages ######################################################
+sudo apt-get -y upgrade
 sudo apt-get install -y python python-dev python-pip
 sudo pip install --upgrade pyserial pyyaml python-memcached flask flask-socketio eventlet
 # there's no stable release version of pyusb in pip right now, so we need the --pre flag
