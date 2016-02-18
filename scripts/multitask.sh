@@ -24,7 +24,7 @@ echo 'Dpkg::Options {
 }' | sudo tee --append /etc/apt/apt.conf.d/local
 
 # Install tmux ###############################################################################
-sudo apt-get update -y && sudo apt-get -y upgrade
+sudo apt-get update -y 
 sudo apt-get install tmux -y
 
 cd $HOME_DIR
