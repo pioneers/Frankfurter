@@ -2,4 +2,8 @@ build/
 
 # Ignore vim files
 *.swp
+.*.swp
+.*.*.swp
 *.swo
+.*.swo
+.*.*.swo
