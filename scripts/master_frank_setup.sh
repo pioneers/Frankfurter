@@ -70,3 +70,6 @@ sudo cp $REPO_ROOT_DIR/resources/sshd_config /etc/ssh/sshd_config
 mkdir -p ~/.ssh
 # Ask Vincent for the private key, or just add your own public key here.
 cat $REPO_ROOT_DIR/resources/frankfurter_vincent.pub >> ~/.ssh/authorized_keys
+
+# Notifies that the script is done!
+echo "Frank script is deloyed. SSH key only applied after reboot." >> ~/frank.txt
