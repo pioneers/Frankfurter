@@ -13,8 +13,6 @@ if ! ls $UPDATES_DIR/frankfurter-update-*.tar.gz 1> /dev/null 2>&1; then
   exit
 fi
 mkdir -p $TEMP_DIR
-
-sudo stop runtime
 cd $UPDATES_DIR
 
 # fail fast. In particular, stop execution if the key cannot be verified.
@@ -28,5 +26,3 @@ rm -rf $UPDATES_DIR/frankfurter-update*.tar.gz*
 # an update tarball should have all of the instructions on how to install itself in its
 # install_update.sh script, so we simply defer to it here.
 sh $TEMP_DIR/install_update.sh
-sleep 1
-sudo start runtime
