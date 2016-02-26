@@ -18,7 +18,7 @@ mkdir $TEMP_DIR/resources
 
 git clone https://github.com/pioneers/daemon $TEMP_DIR/daemon
 git clone https://github.com/pioneers/hibike $TEMP_DIR/hibike
-cp $ROOT_DIR/scripts/install_update.sh $TEMP_DIR
+cp $ROOT_DIR/scripts/update/install_update.sh $TEMP_DIR
 
 CURRENT_TIME=$(date +%s%N)
 UPDATE_FILE_NAME=frankfurter-update-"$CURRENT_TIME".tar.gz

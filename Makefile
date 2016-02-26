@@ -1,8 +1,11 @@
-create_update: clean
-	./scripts/create_update.sh
+beaglebone_install:
+	./scripts/install/start_frank_install.sh
 
-deploy_update: create_update
-	./scripts/deploy_update.sh
+create_update: clean
+	./scripts/update/create_update.sh
+
+deploy_update:
+	./scripts/update/deploy_update.sh
 
 clean:
 	rm -rf build/

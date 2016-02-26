@@ -35,7 +35,7 @@ git clone https://github.com/pioneers/frankfurter
 cd ~/frankfurter
 
 # Run .master_frank_setup.sh inside tmux #####################################################
-tmux new-session -d './scripts/master_frank_setup.sh'
+tmux new-session -d './scripts/install/master_frank_setup.sh'
 
 # Feel free to disconnect and run another script #############################################
 echo 'Disconnect OK'

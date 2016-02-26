@@ -40,12 +40,8 @@ ln -s ~/hibike/hibikeDevices.csv ~/daemon/runtime/hibikeDevices.csv
 
 # set up things we need to update runtime and hibike #########################################
 mkdir -p ~/updates
-cp $REPO_ROOT_DIR/scripts/update.sh ~/updates/
+cp $REPO_ROOT_DIR/resources/update.sh ~/updates/
 
-# TODO(vdonato): updates, hibike, and daemon folder seem to be owned by root. change the owner
-#                to ubuntu
-
-# XXX: not sure if the beaglebone needs to run gpg as root for whatever reason
 gpg --ignore-time-conflict --import $REPO_ROOT_DIR/resources/frankfurter_vincent.gpg
 gpg --ignore-time-conflict --sign-key vincentdonato@pioneers.berkeley.edu
 
@@ -62,7 +58,6 @@ echo "export PYTHONPATH=$HOME/hibike:$PYTHONPATH" >> ~/.bashrc
 
 # stop the apache server from auto-starting
 sudo rm -f /etc/init.d/apache2
-# TODO(vdonato): clean out more startup processes)
 
 # Disable password login and add our ssh key to authorized_keys ##############################
 sudo cp $REPO_ROOT_DIR/resources/sshd_config /etc/ssh/sshd_config
