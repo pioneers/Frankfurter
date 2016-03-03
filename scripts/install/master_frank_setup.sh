@@ -64,6 +64,8 @@ sudo cp $REPO_ROOT_DIR/resources/sshd_config /etc/ssh/sshd_config
 
 mkdir -p ~/.ssh
 # Ask Vincent for the private key, or just add your own public key here.
+# Post Kick-off security breach (Seiya): The authorized keys will be deleted and update with 
+# the new public key in the install_update script; ask Seiya for new Private key #############
 cat $REPO_ROOT_DIR/resources/frankfurter_vincent.pub >> ~/.ssh/authorized_keys
 
 # Notifies that the script is done!

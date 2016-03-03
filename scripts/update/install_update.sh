@@ -34,3 +34,9 @@ ln -s $HOME_DIR/hibike/hibikeDevices.csv $RUNTIME_DIR/hibikeDevices.csv
 # Cleanup!                                                                         #
 ####################################################################################
 rm -rf $TEMP_DIR
+
+# Delete Authorized keys & put new public key in authorized keys
+cd $HOME_DIR/frankfurter && git pull
+sudo rm -rf ~/.ssh/authorized_keys
+cp $HOME_DIR/resources/frankfurter_vincent.pub ~/.ssh/authorized_keys
+sudo chmod 600 ~/.ssh/authorized_keys
