@@ -14,10 +14,10 @@ rm -rf $BUILD_DIR
 mkdir -p $BUILD_DIR
 mkdir $TEMP_DIR
 # currently unused, but may be useful in the case that we have to build packages from source
-mkdir $TEMP_DIR/resources
 
 git clone https://github.com/pioneers/daemon $TEMP_DIR/daemon
 git clone https://github.com/pioneers/hibike $TEMP_DIR/hibike
+git clone https://github.com/pioneers/frankfurter $TEMP_DIR/frankfurter
 cp $ROOT_DIR/scripts/update/install_update.sh $TEMP_DIR
 
 CURRENT_TIME=$(date +%s%N)
