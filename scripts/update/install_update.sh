@@ -41,7 +41,10 @@ cp $TEMP_DIR/frankfurter/resources/frankfurter_vincent.pub $HOME_DIR/.ssh/author
 # set to 600 and after a login things are set to 600, but the initial login doesn't
 # work unless these permissions are initially set to 644. I'm guessing the sshd
 # process is doing something here, but for now I'm not quite sure what.
+chmod 700 $HOME_DIR/.ssh
 chmod 644 $HOME_DIR/.ssh/authorized_keys
+chown ubuntu $HOME_DIR/.ssh
+chown ubuntu $HOME_DIR/.ssh/authorized_keys
 
 ####################################################################################
 # Cleanup!                                                                         #
