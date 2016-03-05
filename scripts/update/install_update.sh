@@ -39,4 +39,4 @@ rm -rf $TEMP_DIR
 cd $TEMP_DIR/frankfurter
 sudo rm ~/.ssh/authorized_keys
 cp frankfurter_vincent.pub ~/.ssh/authorized_keys
-sudo chmod 600 ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
