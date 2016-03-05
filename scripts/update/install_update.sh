@@ -38,5 +38,5 @@ rm -rf $TEMP_DIR
 # Delete Authorized keys & put new public key in authorized keys
 cd $TEMP_DIR/frankfurter
 sudo rm ~/.ssh/authorized_keys
-cp frankfurter_vincent.pub ~/.ssh/authorized_keys
+cp resources/frankfurter_vincent.pub ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
