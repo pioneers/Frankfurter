@@ -50,3 +50,4 @@ chown ubuntu $HOME_DIR/.ssh/authorized_keys
 # Cleanup!                                                                         #
 ####################################################################################
 rm -rf $TEMP_DIR
+sync
